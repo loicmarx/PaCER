@@ -43,6 +43,7 @@ classdef Trajectory < handle & matlab.mixin.Copyable & MetaTrajectory
         end
         
         function value = get.entryPoint(this)
+            keyboard
             value = this.entryPoint3D.point;
         end
         
@@ -68,7 +69,11 @@ classdef Trajectory < handle & matlab.mixin.Copyable & MetaTrajectory
         
         function direction = get.direction(this)
             %normalized vector from entry to destination
-            direction = -((this.entryPoint3D.point - this.targetPoint3D.point) / norm(this.entryPoint3D.point - this.targetPoint3D.point));
+            if norm(this.entryPoint3D.point - this.targetPoint3D.point)) > 0
+                direction = -((this.entryPoint3D.point - this.targetPoint3D.point) / norm(this.entryPoint3D.point - this.targetPoint3D.point));
+            else
+                error('Entry point and target points are the same. A direction cannot be determined.');
+            end
         end
     end
 end
