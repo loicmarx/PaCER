@@ -78,9 +78,10 @@ classdef TestElectrodes < Trajectory & plotable3D & plotableImage & configurable
         end
         
         function electrodesEntryPoints = get.electrodesEntryPoints(this)
-            centralpoint = repmat(this.entryPoint, 1, 5); % x y z for 5 electrodes
-            offsets = this.getElectrodesOffsets();
-            electrodesEntryPoints = centralpoint + offsets;
+            keyboard
+                centralpoint = repmat(this.entryPoint, 1, 5); % x y z for 5 electrodes
+                offsets = this.getElectrodesOffsets();
+                electrodesEntryPoints = centralpoint + offsets;
         end
  
         function electrodesTargetPoints = get.electrodesTargetPoints(this)
@@ -105,7 +106,7 @@ classdef TestElectrodes < Trajectory & plotable3D & plotableImage & configurable
                 disp(strcat('Testelectrodes:set.obliqueViewRadius:Radius have to be greater than 0'));
             else
                 this.obliqueViewRadius = value;
-            end;
+            end
         end        
         
         function pointCloud = getIntersectionPointCloud(this)
