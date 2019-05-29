@@ -16,10 +16,10 @@ cd(fileDir);
 % load the reference data into the test file
 refData = load('refData_testElectrodes.mat');
 
-testElectrode = TestElectrodes();
+testElectrodes = TestElectrodes();
 
 % compare if the structures have been correctly defined  
-assert(testElectrodes.obliqueViewRadius() == testElectrodes_ref.obliqueViewRadius())
+assert(testElectrodes.obliqueViewRadius() == refData.testElectrodes_ref.obliqueViewRadius())
 %assert(testElectrodes_ref.originalEntryPoint() == isnan(NaN(3,1)))
 assert(testElectrodes_ref.marker() == 'x')
 assert(testElectrodes_ref.diameter()== 4 )
