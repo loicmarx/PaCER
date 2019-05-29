@@ -44,11 +44,17 @@ classdef Trajectory < handle & matlab.mixin.Copyable & MetaTrajectory
         
         function value = get.entryPoint(this)
             keyboard
+        if entryPoint3D.point ~= targetPoint3D.point
             value = this.entryPoint3D.point;
+        else
+        error (' entryPoint3D and targetPoint3D must be different.')
         end
         
         function value = get.targetPoint(this)
+            if entryPoint3D.point ~= targetPoint3D.point
             value = this.targetPoint3D.point;
+            else
+          error ('entryPoint3D and targetPoint3D must be different.')
         end
         
         function set.entryPoint(this, point)
