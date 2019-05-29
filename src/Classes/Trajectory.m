@@ -69,7 +69,7 @@ classdef Trajectory < handle & matlab.mixin.Copyable & MetaTrajectory
         
         function direction = get.direction(this)
             %normalized vector from entry to destination
-            if norm(this.entryPoint3D.point - this.targetPoint3D.point)) > 0
+            if norm(this.entryPoint3D.point - this.targetPoint3D.point) > 0
                 direction = -((this.entryPoint3D.point - this.targetPoint3D.point) / norm(this.entryPoint3D.point - this.targetPoint3D.point));
             else
                 error('Entry point and target points are the same. A direction cannot be determined.');
