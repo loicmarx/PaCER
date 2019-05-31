@@ -27,7 +27,7 @@ classdef Trajectory < handle & matlab.mixin.Copyable & MetaTrajectory
                 str = this.String;
             end
         end
-        
+      
         function set.entryPoint3D(this, point3DObj)
             if(isa(point3DObj, 'Point3D'))
                 this.entryPoint3D = point3DObj;
@@ -41,22 +41,25 @@ classdef Trajectory < handle & matlab.mixin.Copyable & MetaTrajectory
                 this.notify('trajectoryChanged');
             end
         end
-        
+     
         function value = get.entryPoint(this)
             keyboard
-        if entryPoint3D.point ~= targetPoint3D.point
+       if ~isempty(ismissing(this.entryPoint3D.point, ''))
+           if ~ismember(entryPoint3D.point,targetPoint3D.point) 
+           
             value = this.entryPoint3D.point;
         else
-        error (' entryPoint3D and targetPoint3D must be different.')
+      error (' entryPoint3D and targetPoint3D must be different.')
+       end
+       end
         end
-        
         function value = get.targetPoint(this)
-            if entryPoint3D.point ~= targetPoint3D.point
+            %if entryPoint3D.point ~isequal (targetPoint3D.point)
             value = this.targetPoint3D.point;
-            else
-          error ('entryPoint3D and targetPoint3D must be different.')
+           % else
+          %error ('entryPoint3D and targetPoint3D must be different.')
         end
-        
+        %keyboard
         function set.entryPoint(this, point)
             if(isempty(this.entryPoint3D))
                 this.entryPoint3D = Point3D();
