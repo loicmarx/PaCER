@@ -79,9 +79,12 @@ classdef TestElectrodes < Trajectory & plotable3D & plotableImage & configurable
         
         function electrodesEntryPoints = get.electrodesEntryPoints(this)
             keyboard
+            %if ~isempty (get.electrodesEntryPoints)
                 centralpoint = repmat(this.entryPoint, 1, 5); % x y z for 5 electrodes
                 offsets = this.getElectrodesOffsets();
                 electrodesEntryPoints = centralpoint + offsets;
+            %else
+                %warning ('')
         end
  
         function electrodesTargetPoints = get.electrodesTargetPoints(this)
