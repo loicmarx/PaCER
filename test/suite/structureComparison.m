@@ -28,7 +28,7 @@ function structureComparison(structure_ref, structure_new)
         end
     else
         fn = fieldnames(structure_ref);
-        %keyboard
+        
             for k = 1:length(fn)
                 k
                 fn(k)
