@@ -28,11 +28,10 @@ function structureComparison(structure_ref, structure_new)
         end
     else
         fn = fieldnames(structure_ref);
-        
+       % keyboard
             for k = 1:length(fn)
-                k
                 fn(k)
-                if (~isnumeric(getfield(structure_new, fn{k})) && ~isobject(getfield(structure_new, fn{k})) && ~isnumeric(getfield(structure_ref, fn{k}))) && ~isobject(getfield(structure_ref, fn{k}))
+                if (~isnumeric(getfield(structure_new, fn{k})) && ~isobject(getfield(structure_new, fn{k})) && ~isnumeric(getfield(structure_ref, fn{k})) && ~isobject(getfield(structure_ref, fn{k})) &&  ~isempty(ismissing(getfield(structure_ref, fn{k}))))
 
                     assert(isequal(getfield(structure_new, fn{k}), getfield(structure_ref, fn{k})))
                 end
