@@ -16,7 +16,7 @@ cd(fileDir);
 % load the reference data into the test file
 refData = load('refData_testElectrodes.mat');
 
-testElectrodes = TestElectrodes();
+testElectrodes_test = TestElectrodes();
 
 % compare if the structures have been correctly defined  
 assert(testElectrodes.obliqueViewRadius() == refData.testElectrodes_ref.obliqueViewRadius())
