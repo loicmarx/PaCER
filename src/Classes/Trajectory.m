@@ -48,7 +48,7 @@ classdef Trajectory < handle & matlab.mixin.Copyable & MetaTrajectory
            
             value = this.entryPoint3D.point;
        else   
-      error (' entryPoint3D and targetPoint3D must be different.')
+      error (' entryPoint3D and targetPoint3D must exist.')
        end
        end
         %end
