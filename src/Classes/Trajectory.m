@@ -43,13 +43,11 @@ classdef Trajectory < handle & matlab.mixin.Copyable & MetaTrajectory
         end
      
         function value = get.entryPoint(this)
-            keyboard
-       if ~isempty(ismissing(this.entryPoint3D.point, ''))&&  ~ismember(this.entryPoint3D.point,this.targetPoint3D.point) 
-           
-            value = this.entryPoint3D.point;
-       else   
-      error (' entryPoint3D and targetPoint3D must exist.')
-       end
+           if ~isempty(ismissing(this.entryPoint3D.point, '')) &&  ~ismember(this.entryPoint3D.point,this.targetPoint3D.point) 
+               value = this.entryPoint3D.point;
+           else  
+               error('entryPoint3D and targetPoint3D must exist.')
+           end
        end
         %end
         function value = get.targetPoint(this)
