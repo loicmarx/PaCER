@@ -28,12 +28,24 @@ function structureComparison(structure_ref, structure_new)
         end
     else
         fn = fieldnames(structure_ref);
-       % keyboard
+        %keyboard
             for k = 1:length(fn)
-                fn(k)
-                if (~isnumeric(getfield(structure_new, fn{k})) && ~isobject(getfield(structure_new, fn{k})) && ~isnumeric(getfield(structure_ref, fn{k})) && ~isobject(getfield(structure_ref, fn{k})) &&  ~isempty(ismissing(getfield(structure_ref, fn{k}))))
-
-                    assert(isequal(getfield(structure_new, fn{k}), getfield(structure_ref, fn{k})))
+                
+                % test if getter throws an error
+                ME = MException('','');
+                try 
+                    getfield(structure_new, fn{k});
+                catch ME
+                    fn(k)
+                    disp(ME);
+                end
+                
+                % if the error message from getter is empty (value is present)
+                if isempty(ME.message)
+                    if (~isnumeric(getfield(structure_new, fn{k})) && ~isobject(getfield(structure_new, fn{k})) && ~isnumeric(getfield(structure_ref, fn{k})) && ~isobject(getfield(structure_ref, fn{k})) &&  ~isempty(ismissing(getfield(structure_ref, fn{k}))))
+                        assert(isequal(getfield(structure_new, fn{k}), getfield(structure_ref, fn{k})))
+                    end 
+                    
                 end
             end
     end
