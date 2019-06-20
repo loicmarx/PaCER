@@ -171,6 +171,7 @@ classdef TestElectrodes < Trajectory & plotable3D & plotableImage & configurable
         function [base,directionVec] = getElectrodePoints(this)
             base = this.electrodesTargetPoints;
             directionVec = (this.electrodesEntryPoints-base);
+            
         end%fcn-getElectrodePoints
         
     end
