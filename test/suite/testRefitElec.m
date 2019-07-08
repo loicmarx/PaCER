@@ -29,7 +29,10 @@ tol = 10-6;
 [refitReZeroedElecMod_new, filteredIntensity_new, skelScaleMm_new] = refitElec(inputs.initialPoly, inputs.pointCloudWorld, inputs.voxelValues);
 
 % compare the reference data with the generated output 
+for k=1:length(filteredIntensity_new)
+    assert(norm(filteredIntensity_new(k) - refData.filteredIntensity_ref(k)) < tol);
+end
 
-
-
-
+for k=1:length(skelScaleMm_new)
+    assert(norm(skelScaleMm_new(k) - refData.skelScaleMm_ref(k)) < tol);
+end
