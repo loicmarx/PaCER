@@ -36,3 +36,13 @@ end
 for k=1:length(skelScaleMm_new)
     assert(norm(skelScaleMm_new(k) - refData.skelScaleMm_ref(k)) < tol);
 end
+
+% test warning message 
+% test if the function cannot detect independent electrode contacts
+warningMessage = 'Could NOT detect independent electrode contacts. Check image quality. ';
+assert(verifyFunctionWarning('refitElec', warningMessage, 'inputs', {inputs.initialPoly, inputs.pointCloudWorld, inputs.voxelValues}))
+
+% test if no electrode specification have been provided
+warningMessage = 'No electrode specification given! Set electrodeType option! Trying to estimate type by contactAreaWidth only which might be wrong!';
+%assert(verifyFunctionWarning('refitElec', warningMessage, 'inputs', {inputs.initialPoly, inputs.pointCloudWorld, inputs.voxelValues})
+
