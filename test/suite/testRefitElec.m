@@ -44,5 +44,5 @@ assert(verifyFunctionWarning('refitElec', warningMessage, 'inputs', {inputs.init
 
 % test if no electrode specification have been provided
 warningMessage = 'No electrode specification given! Set electrodeType option! Trying to estimate type by contactAreaWidth only which might be wrong!';
-%assert(verifyFunctionWarning('refitElec', warningMessage, 'inputs', {inputs.initialPoly, inputs.pointCloudWorld, inputs.voxelValues})
+assert(verifyFunctionWarning('refitElec', warningMessage, 'inputs', {inputs.initialPoly, inputs.pointCloudWorld, inputs.voxelValues}))
 
